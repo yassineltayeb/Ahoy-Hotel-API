@@ -23,6 +23,8 @@ public class DataContext : DbContext
     /* -------------------------------------------------------------------------- */
 
     public DbSet<Booking> Bookings { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Country> Countries { get; set; }
     public DbSet<Facility> Facilities { get; set; }
     public DbSet<Guest> Guests { get; set; }
     public DbSet<Hotel> Hotels { get; set; }
@@ -179,6 +181,63 @@ public class DataContext : DbContext
             NoOfGuests = 2,
             Price = 680,
             HotelId = 1
+        });
+
+        /* --------------------------------- Country -------------------------------- */
+
+        modelBuilder.Entity<Country>().HasData(new Country()
+        {
+            Id = 1,
+            Name = "United Arab Emirates"
+        });
+
+        modelBuilder.Entity<Country>().HasData(new Country()
+        {
+            Id = 2,
+            Name = "Saudi Arabia"
+        });
+
+        /* ---------------------------------- City ---------------------------------- */
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 1,
+            Name = "Dubai",
+            CountryId = 1
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 2,
+            Name = "Abu Dhabi",
+            CountryId = 1
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 3,
+            Name = "Sharjah",
+            CountryId = 1
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 4,
+            Name = "Jeddah",
+            CountryId = 2
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 5,
+            Name = "Riyadh",
+            CountryId = 2
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 6,
+            Name = "Dammam",
+            CountryId = 2
         });
     }
 }
