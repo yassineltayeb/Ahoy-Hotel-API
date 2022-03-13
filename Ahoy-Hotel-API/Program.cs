@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Nest;
 using O.AlMamoon.Mobile.APP.API.Installers;
 
 /* -------------------------------------------------------------------------- */
@@ -17,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 /* --------------------------------- Swagger -------------------------------- */
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Ahoy Hotel API", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -43,6 +44,9 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+/* ------------------------------ Elasticsearch ----------------------------- */
+var settings = new ConnectionSettings();
+builder.Services.AddSingleton<IElasticClient>(new ElasticClient(settings));
 
 var app = builder.Build();
 

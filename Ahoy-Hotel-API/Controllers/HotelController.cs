@@ -7,6 +7,7 @@ using Ahoy_Hotel_API.Interfaces;
 using Ahoy_Hotel_API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
 using Newtonsoft.Json;
 
 namespace Ahoy_Hotel_API.Controllers;
@@ -30,9 +31,11 @@ public class HotelController : ControllerBase
     /* -------------------------------------------------------------------------- */
     /*                                 Constructor                                */
     /* -------------------------------------------------------------------------- */
+    private readonly IElasticClient _elasticClient;
 
-    public HotelController(IUnitOfWork unitOfWork, IMapper mapper)
+    public HotelController(IUnitOfWork unitOfWork, IMapper mapper, IElasticClient elasticClient)
     {
+        _elasticClient = elasticClient;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -262,6 +265,16 @@ public class HotelController : ControllerBase
             StatusCode = StatusCodes.Status200OK,
             Message = Helper.Messages.Success
         });
+    }
+
+    [HttpGet("elasticsearch")]
+    public async Task<IActionResult> GetHotelsElasticsearch(int id)
+    {
+        var response = await _elasticClient.SearchAsync<Hotel>(h => h
+                        .Query(q => q.Term(t => t.Name, id) ||
+                        q.Match(m => m.Field(f => f.Name).Query(id.ToString()))));
+        var result = response.Documents.SingleOrDefault();
+        return Ok(result);
     }
 }
 

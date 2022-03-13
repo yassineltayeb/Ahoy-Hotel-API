@@ -76,6 +76,7 @@ public class HotelRepository : IHotelRepository
     {
         return await _context.Hotels
                                 .Include(h => h.Facilities)
+                                    .ThenInclude(f => f.Facility)
                                 .Include(h => h.Images)
                                 .Include(h => h.Reviews)
                                 .Include(h => h.Rooms)
@@ -87,6 +88,7 @@ public class HotelRepository : IHotelRepository
     {
         var hotels = _context.Hotels
                                 .Include(h => h.Facilities)
+                                    .ThenInclude(f => f.Facility)
                                 .Include(h => h.Images)
                                 .Include(h => h.Reviews)
                                 .Include(h => h.Rooms)
