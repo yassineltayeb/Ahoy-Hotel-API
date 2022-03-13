@@ -19,5 +19,7 @@ public class HotelFacilityProfile : Profile
         CreateMap<HotelFacility, HotelFacilityListDto>()
             .ForMember(dest => dest.Facility, m => m.MapFrom(src => src.Facility.Name))
             .ReverseMap();
+
+        CreateMap<HotelFacility, HotelFacilityAddDto>().ReverseMap();
     }
 }

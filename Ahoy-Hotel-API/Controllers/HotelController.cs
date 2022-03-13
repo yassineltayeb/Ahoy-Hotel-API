@@ -1,4 +1,5 @@
 ﻿using Ahoy_Hotel_API.Contracts.Hotel;
+using Ahoy_Hotel_API.Contracts.HotelFacility;
 using Ahoy_Hotel_API.Contracts.Review;
 using Ahoy_Hotel_API.Contracts.Room;
 using Ahoy_Hotel_API.Helpers.Common;
@@ -204,7 +205,7 @@ public class HotelController : ControllerBase
         });
     }
 
-    [HttpPost("review")]
+    [HttpPost("room")]
     public async Task<IActionResult> AddHotelRoom(RoomAddDto roomAddDto)
     {
         var hotel = await _unitOfWork.Hotels.GetHotelById(roomAddDto.HotelId);
@@ -218,8 +219,6 @@ public class HotelController : ControllerBase
                 Message = "Hotel Not Found"
             });
 
-        var guest = await _unitOfWork.Guests.GetCurrentGuest();
-
         var room = _mapper.Map<Room>(roomAddDto);
 
         await _unitOfWork.Hotels.AddHotelRoom(room);
@@ -229,6 +228,36 @@ public class HotelController : ControllerBase
         return Ok(new RequestDetails
         {
             Data = roomToReturn,
+            Status = true,
+            StatusCode = StatusCodes.Status200OK,
+            Message = Helper.Messages.Success
+        });
+    }
+
+    [HttpPost("facility")]
+    public async Task<IActionResult> AddHotelFacility(HotelFacilityAddDto hotelFacilityAddDto)
+    {
+        var hotel = await _unitOfWork.Hotels.GetHotelById(hotelFacilityAddDto.HotelId);
+
+        if (hotel == null)
+            return NotFound(new RequestDetails
+            {
+                Data = new { },
+                Status = true,
+                StatusCode = StatusCodes.Status404NotFound,
+                Message = "Hotel Not Found"
+            });
+
+        var facility = _mapper.Map<HotelFacility>(hotelFacilityAddDto);
+
+        await _unitOfWork.Hotels.AddHotelFacility(facility);
+        await _unitOfWork.Complete();
+
+        var facilityToReturn = _mapper.Map<HotelFacilityListDto>(facility);
+
+        return Ok(new RequestDetails
+        {
+            Data = facilityToReturn,
             Status = true,
             StatusCode = StatusCodes.Status200OK,
             Message = Helper.Messages.Success
