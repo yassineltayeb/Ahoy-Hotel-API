@@ -16,7 +16,7 @@ public class RoomProfile : Profile
 
     public RoomProfile()
     {
-        CreateMap<Room, RoomListDto>()
-            .ReverseMap();
+        CreateMap<Room, RoomListDto>().ReverseMap();
+        CreateMap<Room, RoomAddDto>().ReverseMap();
     }
 }

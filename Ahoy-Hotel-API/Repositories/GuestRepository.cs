@@ -18,6 +18,10 @@ namespace Ahoy_Hotel_API.Repositories;
 
 public class GuestRepository : IGuestRepository
 {
+    /* -------------------------------------------------------------------------- */
+    /*                                  Variables                                 */
+    /* -------------------------------------------------------------------------- */
+
     private readonly DataContext _context;
     private readonly IConfiguration _config;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -39,6 +43,7 @@ public class GuestRepository : IGuestRepository
     /*                                  Functions                                 */
     /* -------------------------------------------------------------------------- */
 
+    /* ----------------------------- Get Guest By ID ---------------------------- */
     public async Task<Guest> GetGuestByID(int id)
     {
         return await _context.Guests.SingleOrDefaultAsync(u => u.Id == id);
@@ -92,6 +97,7 @@ public class GuestRepository : IGuestRepository
         return tokenHandler.WriteToken(token);
     }
 
+    /* ---------------------------- Get Current Guest --------------------------- */
     public async Task<Guest> GetCurrentGuest()
     {
         var guestID = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -99,12 +105,14 @@ public class GuestRepository : IGuestRepository
         return await GetGuestByID(guestID);
     }
 
+    /* ------------------------------ Update Guest ------------------------------ */
     public async Task<Guest> UpdateGuest(Guest guest)
     {
         _context.Entry(guest).State = EntityState.Modified;
         return await Task.Run(() => guest);
     }
 
+    /* --------------------------- Get Guest Bookings --------------------------- */
     public async Task<PagedList<Booking>> GetGuestBookings(GuestFilterDto guestFilterDto)
     {
         var bookings = _context.Bookings

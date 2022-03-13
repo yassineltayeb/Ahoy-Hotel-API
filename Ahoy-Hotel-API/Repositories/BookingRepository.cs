@@ -5,8 +5,16 @@ using O.AlMamoon.Mobile.APP.API.Data;
 
 namespace Ahoy_Hotel_API.Repositories;
 
+/* -------------------------------------------------------------------------- */
+/*                             Booking Repository                             */
+/* -------------------------------------------------------------------------- */
+
 public class BookingRepository : IBookingRepository
 {
+    /* -------------------------------------------------------------------------- */
+    /*                                  Variables                                 */
+    /* -------------------------------------------------------------------------- */
+
     private readonly DataContext _context;
     private readonly IConfiguration _config;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -15,8 +23,8 @@ public class BookingRepository : IBookingRepository
     /*                                 Constructor                                */
     /* -------------------------------------------------------------------------- */
 
-    public BookingRepository(DataContext context, 
-                             IConfiguration config, 
+    public BookingRepository(DataContext context,
+                             IConfiguration config,
                              IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
@@ -24,6 +32,11 @@ public class BookingRepository : IBookingRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  Functions                                 */
+    /* -------------------------------------------------------------------------- */
+
+    /* ----------------------------- Get Reservation ---------------------------- */
     public Task<Booking> GetReservation(int id)
     {
         return _context.Bookings
@@ -32,10 +45,7 @@ public class BookingRepository : IBookingRepository
                         .SingleOrDefaultAsync(b => b.Id == id);
     }
 
-    /* -------------------------------------------------------------------------- */
-    /*                                  Functions                                 */
-    /* -------------------------------------------------------------------------- */
-
+    /* --------------------------------- Reserve -------------------------------- */
     public async Task<Booking> Reserve(Booking booking)
     {
         await _context.Bookings.AddAsync(booking);
@@ -43,6 +53,7 @@ public class BookingRepository : IBookingRepository
         return booking;
     }
 
+    /* --------------------------- Update Reservation --------------------------- */
     public async Task<Booking> UpdateReservation(Booking booking)
     {
         _context.Entry(booking).State = EntityState.Modified;

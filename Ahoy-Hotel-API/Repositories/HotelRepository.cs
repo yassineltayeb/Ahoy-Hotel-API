@@ -9,14 +9,26 @@ using System.Linq.Expressions;
 
 namespace Ahoy_Hotel_API.Repositories;
 
+/* -------------------------------------------------------------------------- */
+/*                              Hotel Repository                              */
+/* -------------------------------------------------------------------------- */
+
 public class HotelRepository : IHotelRepository
 {
+    /* -------------------------------------------------------------------------- */
+    /*                                  Variables                                 */
+    /* -------------------------------------------------------------------------- */
+
     private readonly DataContext _context;
     private readonly IConfiguration _config;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public HotelRepository(DataContext context, 
-                           IConfiguration config, 
+    /* -------------------------------------------------------------------------- */
+    /*                                 Constructor                                */
+    /* -------------------------------------------------------------------------- */
+
+    public HotelRepository(DataContext context,
+                           IConfiguration config,
                            IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
@@ -24,12 +36,42 @@ public class HotelRepository : IHotelRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  Functions                                 */
+    /* -------------------------------------------------------------------------- */
+
+    /* -------------------------------- Add Hotel ------------------------------- */
     public async Task<Hotel> AddHotel(Hotel hotel)
     {
         await _context.Hotels.AddAsync(hotel);
         return hotel;
     }
 
+    /* --------------------------- Add Hotel Facility --------------------------- */
+    public async Task<HotelFacility> AddHotelFacility(HotelFacility facility)
+    {
+        await _context.HotelFacilities.AddRangeAsync(facility);
+
+        return facility;
+    }
+
+    /* ---------------------------- Add Hotel Review ---------------------------- */
+    public async Task<Review> AddHotelReview(Review review)
+    {
+        await _context.Reviews.AddRangeAsync(review);
+
+        return review;
+    }
+
+    /* ----------------------------- Add Hotel Room ----------------------------- */
+    public async Task<Room> AddHotelRoom(Room room)
+    {
+        await _context.Rooms.AddRangeAsync(room);
+
+        return room;
+    }
+
+    /* ----------------------------- Get Hotel By Id ---------------------------- */
     public async Task<Hotel> GetHotelById(int id)
     {
         return await _context.Hotels
@@ -40,6 +82,7 @@ public class HotelRepository : IHotelRepository
                                 .SingleOrDefaultAsync(h => h.Id == id);
     }
 
+    /* ------------------------------- Get Hotels ------------------------------- */
     public async Task<PagedList<Hotel>> GetHotels(HotelFilterDto hotelFilterDto)
     {
         var hotels = _context.Hotels
@@ -55,17 +98,20 @@ public class HotelRepository : IHotelRepository
 
         /* --------------------------------- Sorting -------------------------------- */
         var columnsMap = GetHotelsSortingParameters();
-       hotels = hotels.ApplyOrdering(hotelFilterDto, columnsMap);
+        hotels = hotels.ApplyOrdering(hotelFilterDto, columnsMap);
 
-        return  PagedList<Hotel>.ToPagedList(hotels.ToList(), hotelFilterDto.PageNumber, hotelFilterDto.PageSize);
+        /* ------------------------------- Pagination ------------------------------- */
+        return PagedList<Hotel>.ToPagedList(hotels.ToList(), hotelFilterDto.PageNumber, hotelFilterDto.PageSize);
     }
 
+    /* ------------------------------ Update Hotel ------------------------------ */
     public async Task<Hotel> UpdateHotel(Hotel hotel)
     {
         _context.Entry(hotel).State = EntityState.Modified;
         return await Task.Run(() => hotel);
     }
 
+    /* ---------------------- Get Hotels Sorting Parameters --------------------- */
     private Dictionary<string, Expression<Func<Hotel, object>>> GetHotelsSortingParameters()
     {
         return new Dictionary<string, Expression<Func<Hotel, object>>>()

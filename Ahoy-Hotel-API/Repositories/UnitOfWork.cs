@@ -21,6 +21,10 @@ public class UnitOfWork : IUnitOfWork
     private readonly IHttpContextAccessor _httpContextAccessor;
     private IDbContextTransaction _transaction;
 
+    /* -------------------------------------------------------------------------- */
+    /*                                Repositories                                */
+    /* -------------------------------------------------------------------------- */
+
     private IGuestRepository _guestRepository;
     private IBookingRepository _bookingRepository;
     private IRoomRepository _roomRepository;
@@ -33,8 +37,6 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(DataContext context)
     {
         _context = context;
-        //_context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
-        //_context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
         _config = new ConfigurationBuilder()
                         .SetBasePath(Directory.GetCurrentDirectory())
                         .AddJsonFile("appsettings.json")
@@ -67,7 +69,6 @@ public class UnitOfWork : IUnitOfWork
             return _bookingRepository;
         }
     }
-
     public IRoomRepository Rooms
     {
         get
@@ -113,9 +114,7 @@ public class UnitOfWork : IUnitOfWork
     /* --------------------------------- Commit --------------------------------- */
     public async Task Commit()
     {
-        //await _context.Database.CommitTransactionAsync();
         await _transaction.CommitAsync();
-
     }
 
     /* --------------------------------- Dispose -------------------------------- */

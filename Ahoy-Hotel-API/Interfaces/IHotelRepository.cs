@@ -14,4 +14,7 @@ public interface IHotelRepository
     Task<Hotel> GetHotelById(int id);
     Task<Hotel> AddHotel(Hotel hotel);
     Task<Hotel> UpdateHotel(Hotel hotel);
+    Task<Review> AddHotelReview(Review review);
+    Task<HotelFacility> AddHotelFacility(HotelFacility facility);
+    Task<Room> AddHotelRoom(Room room);
 }

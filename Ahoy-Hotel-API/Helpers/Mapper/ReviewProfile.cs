@@ -18,5 +18,7 @@ public class ReviewProfile : Profile
         CreateMap<Review, ReviewListDto>()
             .ForMember(dest => dest.Guest, m => m.MapFrom(src => src.Guest.FullName))
             .ReverseMap();
+
+        CreateMap<Review, ReivewAddDto>().ReverseMap();
     }
 }
