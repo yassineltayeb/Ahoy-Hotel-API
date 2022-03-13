@@ -13,6 +13,9 @@ public class Hotel : BaseEntity
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
     public int CountryId { get; set; }
+    public Country Country { get; set; }
+    public int CityId { get; set; }
+    public City City { get; set; }
     public virtual List<HotelFacility> Facilities { get; set; }
     public virtual List<HotelImage> Images { get; set; }
     public virtual List<Review> Reviews { get; set; }

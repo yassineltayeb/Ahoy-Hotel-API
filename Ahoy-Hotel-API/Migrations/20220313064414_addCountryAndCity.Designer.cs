@@ -12,7 +12,7 @@ using O.AlMamoon.Mobile.APP.API.Data;
 namespace Ahoy_Hotel_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220313060551_addCountryAndCity")]
+    [Migration("20220313064414_addCountryAndCity")]
     partial class addCountryAndCity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,9 +91,6 @@ namespace Ahoy_Hotel_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -109,64 +106,56 @@ namespace Ahoy_Hotel_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
-
                     b.ToTable("Cities");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CountryId = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1884),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3757),
                             IsDeleted = false,
                             Name = "Dubai",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1884)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3758)
                         },
                         new
                         {
                             Id = 2,
-                            CountryId = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1891),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3849),
                             IsDeleted = false,
                             Name = "Abu Dhabi",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1892)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3850)
                         },
                         new
                         {
                             Id = 3,
-                            CountryId = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1897),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3884),
                             IsDeleted = false,
                             Name = "Sharjah",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1898)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3885)
                         },
                         new
                         {
                             Id = 4,
-                            CountryId = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1903),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3904),
                             IsDeleted = false,
                             Name = "Jeddah",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1903)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3905)
                         },
                         new
                         {
                             Id = 5,
-                            CountryId = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1908),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3920),
                             IsDeleted = false,
                             Name = "Riyadh",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1909)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3921)
                         },
                         new
                         {
                             Id = 6,
-                            CountryId = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1921),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3942),
                             IsDeleted = false,
                             Name = "Dammam",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1921)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3942)
                         });
                 });
 
@@ -199,18 +188,18 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1866),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3700),
                             IsDeleted = false,
                             Name = "United Arab Emirates",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1866)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3719)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1873),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3739),
                             IsDeleted = false,
                             Name = "Saudi Arabia",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1874)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3740)
                         });
                 });
 
@@ -247,38 +236,38 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1383),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4809),
                             IconURL = "https://www.icons.com/breakfast",
                             IsDeleted = false,
                             Name = "Breakfast",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1397)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4822)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1441),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4856),
                             IconURL = "https://www.icons.com/wifi",
                             IsDeleted = false,
                             Name = "Wifi",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1442)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4856)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1455),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4866),
                             IconURL = "https://www.icons.com/parking",
                             IsDeleted = false,
                             Name = "Parking",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1456)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4866)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1466),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4874),
                             IconURL = "https://www.icons.com/Spa",
                             IsDeleted = false,
                             Name = "Spa",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1466)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4874)
                         });
                 });
 
@@ -319,12 +308,12 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1499),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4890),
                             Email = "yassineltayeb@live.com",
                             FullName = "Guest User",
                             IsDeleted = false,
-                            Password = "$2a$11$TPG0voZZrrFJ6kCKJL.1.OK1OcS8v4MCNXo2gnajmjnVXZNqMDCYy",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 693, DateTimeKind.Local).AddTicks(1499)
+                            Password = "$2a$11$6ORDD13KHSKViKiHDNPjkuqcWWZkqBiYIjcHfEOBEVPZid5mMWg9O",
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 455, DateTimeKind.Local).AddTicks(4890)
                         });
                 });
 
@@ -339,6 +328,9 @@ namespace Ahoy_Hotel_API.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
@@ -374,6 +366,10 @@ namespace Ahoy_Hotel_API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
                     b.ToTable("Hotels");
 
                     b.HasData(
@@ -381,15 +377,16 @@ namespace Ahoy_Hotel_API.Migrations
                         {
                             Id = 1,
                             Address = "Sheikh Rashid Road, Wafi Mall, Bur Dubai, Dubai, United Arab Emirates",
-                            CountryId = 0,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1477),
+                            CityId = 1,
+                            CountryId = 1,
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3967),
                             Description = "Inspired by the great pyramids of Egypt, Raffles Dubai is a stunning landmark in Dubai�s skyline. This award-winning hotel features an outdoor pool, an extensive spa and free in-room WiFi.",
                             Email = "guests@rafflesdubai.com",
                             IsDeleted = false,
                             Location = "https://www.google.com/maps/dir/25.267754,55.3475338/Raffles+Dubai/@25.247935,55.2678204,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3e5f5d4a2139ede3:0x6d83d44701a241ab!2m2!1d55.3203503!2d25.227917",
                             Name = "Raffles Dubai",
                             PhoneNumber = "05555555",
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1483)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(3967)
                         });
                 });
 
@@ -428,38 +425,38 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1555),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4027),
                             FacilityId = 1,
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1556)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4028)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1564),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4041),
                             FacilityId = 2,
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1564)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4041)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1591),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4051),
                             FacilityId = 3,
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1592)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4051)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1636),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4090),
                             FacilityId = 4,
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1638)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4091)
                         });
                 });
 
@@ -497,28 +494,28 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1653),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4108),
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1654),
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4108),
                             Url = "https://www.images.com/image1"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1662),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4209),
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1662),
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4218),
                             Url = "https://www.images.com/image2"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1668),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4244),
                             HotelId = 1,
                             IsDeleted = false,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1670),
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4245),
                             Url = "https://www.images.com/image3"
                         });
                 });
@@ -565,13 +562,13 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1685),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4262),
                             Description = "The entire experience from check-in to check out. Great staffs, room, decoration, food, facilities. Also, very nice attentions have been offered for our special occasion :)",
                             GuestId = 1,
                             HotelId = 1,
                             IsDeleted = false,
                             Rating = 5,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1686)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4263)
                         });
                 });
 
@@ -614,35 +611,35 @@ namespace Ahoy_Hotel_API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1698),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4286),
                             HotelId = 1,
                             IsDeleted = false,
                             NoOfGuests = 2,
                             Price = 680.0,
                             RoomNo = 101,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1698)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4286)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1842),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4299),
                             HotelId = 1,
                             IsDeleted = false,
                             NoOfGuests = 2,
                             Price = 680.0,
                             RoomNo = 102,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1842)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4299)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1851),
+                            CreatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4309),
                             HotelId = 1,
                             IsDeleted = false,
                             NoOfGuests = 2,
                             Price = 680.0,
                             RoomNo = 103,
-                            UpdatedOn = new DateTime(2022, 3, 13, 10, 5, 50, 921, DateTimeKind.Local).AddTicks(1852)
+                            UpdatedOn = new DateTime(2022, 3, 13, 10, 44, 13, 702, DateTimeKind.Local).AddTicks(4309)
                         });
                 });
 
@@ -665,13 +662,21 @@ namespace Ahoy_Hotel_API.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("Ahoy_Hotel_API.Models.City", b =>
+            modelBuilder.Entity("Ahoy_Hotel_API.Models.Hotel", b =>
                 {
+                    b.HasOne("Ahoy_Hotel_API.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Ahoy_Hotel_API.Models.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("City");
 
                     b.Navigation("Country");
                 });

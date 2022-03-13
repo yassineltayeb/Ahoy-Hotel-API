@@ -84,6 +84,58 @@ public class DataContext : DbContext
             Password = BCrypt.Net.BCrypt.HashPassword("123456"),
         });
 
+        /* --------------------------------- Country -------------------------------- */
+
+        modelBuilder.Entity<Country>().HasData(new Country()
+        {
+            Id = 1,
+            Name = "United Arab Emirates"
+        });
+
+        modelBuilder.Entity<Country>().HasData(new Country()
+        {
+            Id = 2,
+            Name = "Saudi Arabia"
+        });
+
+        /* ---------------------------------- City ---------------------------------- */
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 1,
+            Name = "Dubai",
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 2,
+            Name = "Abu Dhabi",
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 3,
+            Name = "Sharjah",
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 4,
+            Name = "Jeddah",
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 5,
+            Name = "Riyadh",
+        });
+
+        modelBuilder.Entity<City>().HasData(new City()
+        {
+            Id = 6,
+            Name = "Dammam",
+        });
+
+        /* ---------------------------------- Hotel --------------------------------- */
         modelBuilder.Entity<Hotel>().HasData(new Hotel
         {
             Id = 1,
@@ -92,7 +144,9 @@ public class DataContext : DbContext
             Location = "https://www.google.com/maps/dir/25.267754,55.3475338/Raffles+Dubai/@25.247935,55.2678204,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3e5f5d4a2139ede3:0x6d83d44701a241ab!2m2!1d55.3203503!2d25.227917",
             Description = "Inspired by the great pyramids of Egypt, Raffles Dubai is a stunning landmark in Dubai�s skyline. This award-winning hotel features an outdoor pool, an extensive spa and free in-room WiFi.",
             Email = "guests@rafflesdubai.com",
-            PhoneNumber = "05555555"
+            PhoneNumber = "05555555",
+            CountryId = 1,
+            CityId = 1
         });
 
         /* ----------------------------- Hotel Facility ----------------------------- */
@@ -181,63 +235,6 @@ public class DataContext : DbContext
             NoOfGuests = 2,
             Price = 680,
             HotelId = 1
-        });
-
-        /* --------------------------------- Country -------------------------------- */
-
-        modelBuilder.Entity<Country>().HasData(new Country()
-        {
-            Id = 1,
-            Name = "United Arab Emirates"
-        });
-
-        modelBuilder.Entity<Country>().HasData(new Country()
-        {
-            Id = 2,
-            Name = "Saudi Arabia"
-        });
-
-        /* ---------------------------------- City ---------------------------------- */
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 1,
-            Name = "Dubai",
-            CountryId = 1
-        });
-
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 2,
-            Name = "Abu Dhabi",
-            CountryId = 1
-        });
-
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 3,
-            Name = "Sharjah",
-            CountryId = 1
-        });
-
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 4,
-            Name = "Jeddah",
-            CountryId = 2
-        });
-
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 5,
-            Name = "Riyadh",
-            CountryId = 2
-        });
-
-        modelBuilder.Entity<City>().HasData(new City()
-        {
-            Id = 6,
-            Name = "Dammam",
-            CountryId = 2
         });
     }
 }
