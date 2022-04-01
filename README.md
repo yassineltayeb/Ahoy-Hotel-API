@@ -10,4 +10,4 @@ Technologies/Packages/Features Used:
 6- Database-First Migrations.
 7- Pagination.
 8- Linq.
-and more ..
+and more ...
